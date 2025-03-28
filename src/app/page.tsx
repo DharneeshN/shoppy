@@ -75,7 +75,7 @@ export default function Page() {
 }
 const FadeIn = ({ children }: { children: React.ReactNode }) => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.2 }); // Remove `triggerOnce: true`
+  const [ref, inView] = useInView({ threshold: 0.2 });
 
   useEffect(() => {
     if (inView) {

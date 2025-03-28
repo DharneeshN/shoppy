@@ -18,10 +18,7 @@ export default function ContactForm() {
 
   const onSubmit = (data: any) => {
     console.log("Form Submitted:", data);
-
-    // ✅ Show toast notification
     toast.success("Message sent successfully!");
-
     reset(); 
   };
 

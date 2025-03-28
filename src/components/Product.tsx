@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 export default function Product({ product }: { product: any }) {
   const [open, setOpen] = useState(false);
@@ -31,9 +31,9 @@ export default function Product({ product }: { product: any }) {
       </motion.div>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="p-6">
+            <DialogTitle>{product.title}</DialogTitle>
           <div className="flex flex-col items-center">
             <img src={product.image} alt={product.title} className="h-48 w-full object-contain mb-4" />
-            <h3 className="text-xl font-bold">{product.title}</h3>
             <p className="text-gray-600 text-lg">${product.price}</p>
             <p className="mt-2 text-sm text-center">{product.description}</p>
           </div>
