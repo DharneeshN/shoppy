@@ -1,3 +1,7 @@
+"use client"
+import { useEffect, useState } from "react"
+import axios from 'axios';
+import { motion } from "framer-motion"
 import { AppSidebar } from "@/components/app-sidebar"
 import { SignIn } from "@/components/auth-components"
 import {
@@ -15,6 +19,23 @@ import {
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 
 export default function Page() {
+  const [products, setProducts] = useState<any[]>([])
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const { data } = await axios.get("https://fakestoreapi.com/products")
+        setProducts(data)
+      } catch (error) {
+        console.error("Error fetching products:", error)
+      }
+    }
+
+    fetchProducts()
+  }, [])
+
+  console.log(products)
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -32,13 +53,20 @@ export default function Page() {
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <ThemeToggle className="ml-auto"/>
-          <SignIn provider="google"/>
+          <ThemeToggle className="ml-auto" />
+          <SignIn provider="google" />
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-5">
-            {Array.from({ length: 20 }).map((_, i) => (
-              <div key={i} className="bg-muted/50 aspect-square rounded-xl" />
+          <div className="grid auto-rows-min gap-10 md:grid-cols-3">
+            {products.map((product, i) => (
+              <motion.img
+                key={i}
+                src={product.image}
+                alt="Product"
+                className="w-32 h-32 sm:w-40 sm:h-40 object-contain rounded-lg shadow-md"
+                whileHover={{ scale: 1.3 }}
+                transition={{ duration: 0.4 }}
+              />
             ))}
           </div>
         </div>
