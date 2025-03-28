@@ -34,3 +34,13 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
+Animations
+Fade-In Effects: Implemented using Framer Motion for smooth entry animations on page load.
+
+shadcn/ui Components: Used for pre-styled UI elements, ensuring consistency and accessibility.
+
+API Integration
+FakeStoreAPI: Used for fetching product data, simulating a real e-commerce backend.
